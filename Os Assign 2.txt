@@ -1,0 +1,399 @@
+1.
+mkdir {a1,a2,a3,a4,a5,a6,a7,a8,a9,10}
+
+*************************************
+*************************************
+
+2.
+
+echo "==================== AVAILABLE CHOICES ========================="
+echo "1. Compare two strings"
+echo "2. Concatenation of two strings"
+echo "3. Find length of a given string"
+echo "4. Reverse the string"
+echo "E. Exit"
+echo "================================================================"
+echo "Enter your choice :"
+read choice
+while [ "$choice" != "e" -o "$choice" != "E" ]
+do
+	case $choice in
+	"1")
+		echo -n "Enter first string :"	
+		read firststr
+		echo -n "Enter second string :"	
+		read secondstr
+		#if [ "$firststr" = "$secondstr" ] #FOR CASE SENSITIVE CHECK
+		if [ `echo $firststr | grep -ci $secondstr` -gt 0 ] #FOR CASE INSENSITIVE CHECK
+		then
+			echo "Both strings are same"
+		else
+			echo "Both strings are different"
+		fi
+;;	
+	"2")
+		echo -n "Enter first string :"	
+		read firststr
+		echo -n "Enter second string :"	
+		read secondstr
+		echo "Joining of two string is : $firststr$secondstr";;
+	"3")
+		echo -n "Enter any string :"	
+		read string
+		length=$(echo $string | wc -c)
+		length=$(expr $length - 1)
+		echo "Length of string is "$length;;
+
+	"4")
+		echo "Enter any string :"	
+		read string
+		#echo $(echo $string | rev ) 1-solution
+		length=$(echo $string | wc -c)
+		length=$(expr $length - 1)
+		i=$length
+		s=""
+		while [ $i -gt 0 ]
+		do
+			 s=$s$(echo $string | cut -c$i)
+			i=$(expr $i - 1)
+		done
+		echo "Reverse of the string is $s"
+	;;
+	[eE])
+		exit;
+	;;
+	*)
+		echo "Invalid choice";;
+done
+
+*************************************************************************
+*************************************************************************
+
+3.
+
+a=1
+for i in *.txt; do
+  new=$(printf "%04d.txt" "$a") #04 pad to length of 4
+  mv -i -- "$i" "$new"
+  let a=a+1
+done
+
+*************************************************************************
+*************************************************************************
+
+4.
+
+echo $HOME
+echo $PATH
+echo $SHELL
+echo $HISTORY
+echo $LOGNAME
+echo $TERM
+
+*************************************************************************
+*************************************************************************
+
+5.
+
+echo "The list of File Names in the curent directory."
+echo "Which have Read,Write and Execute permisions. "
+for file in *
+do
+if [ -f $file ]
+then
+if [ -r $file -a -w $file -a -x $file ]
+then
+ls -l $file
+fi
+fi
+done
+
+
+*************************************************************************
+*************************************************************************
+
+6.
+echo "enter the directory name"
+read dir
+if [ -d $dir ]
+then
+cd $dir
+ls > f
+exec < f
+while read line
+do
+if [ -f $line ]
+then
+if [ -r $line -a -w $line -a -x $line ]
+then
+echo "$line has all permissions"
+else
+echo "files not having all permissions"
+fi
+fi
+done
+fi
+
+*************************************************************************
+*************************************************************************
+7.
+find -type f -name "*.sh" -size +5k
+
+
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+**************************************************************************
+
+
+1.echo -n "Enter year (YYYY): "
+read y
+a = 'expr $y%4'
+b = 'expr $y%100'
+c = 'expr $y%400'
+if[$a -eq 0 -a $b -ne - -o $c -eq 0]
+then 
+echo "$y is leap year"
+else
+echo "$y is not a leap year"
+
+fi
+
+*************************************************************************
+*************************************************************************
+
+2.a
+
+days=(mon tue wed thurs fri sat)
+
+for ((i=0; i<${#days[@]}; i++))
+do
+    if (( i < 4 ))
+    then
+        echo "weekday: ${days[$i]}"
+    else
+        echo "weekend: ${days[$i]}"
+    fi
+done
+
+
+
+2.b
+echo "enter a number"
+read n
+case $n in
+1) echo "Sunday" ;;
+2) echo "Monday" ;;
+3) echo "Tuesday" ;;
+4) echo "Wednesday" ;;
+5) echo "Thursday" ;;
+6) echo "Friday" ;;
+7) echo "Saturday" ;;
+*) echo "enter value between 1 to 7" ;;
+esac
+
+
+*************************************************************************
+*************************************************************************
+
+3.a
+
+echo "Enter Num1"
+read num1
+echo "Enter Num2"
+read num2
+echo "Enter Num3"
+read num3
+
+if [ $num1 -gt $num2 ] && [ $num1 -gt $num3 ]
+then
+    echo $num1
+elif [ $num2 -gt $num1 ] && [ $num2 -gt $num3 ]
+then
+    echo $num2
+else
+    echo $num3
+fi
+
+
+3.b
+
+echo "Enter Size(N)"
+read N
+
+i=1
+sum=0
+
+echo "Enter Numbers"
+while [ $i -le $N ]
+do
+  read num               #get number
+  sum=$((sum + num))     #sum+=num
+  i=$((i + 1))
+done
+
+avg=$(echo $sum / $N | bc -l)
+
+echo $avg
+
+***********************************************************
+***********************************************************
+
+4.
+read -p "Enter a number: " number
+if [ $((number%2)) -eq 0 ]
+then
+  echo "Number is even."
+else
+  echo "Number is odd."
+fi
+
+***********************************************************
+***********************************************************
+
+6.a
+
+let "myvar =2" "myvar1=1" "myvar2=myvar1+myvar"; echo $myvar2
+let "myvar =2" "myvar1=1" "myvar2=myvar1/myvar"; echo $myvar2
+
+
+6.b
+
+$expr 12 + 8 
+$expr 12 \* 2
+
+6.c
+
+echo "12+5" | bc
+echo "12*5" | bc
+
+***********************************************************
+***********************************************************
+
+7.
+
+N=6 
+a=0 
+b=1  
+   
+echo "The Fibonacci series is : "
+   
+for (( i=0; i<N; i++ )) 
+do
+    echo -n "$a "
+    fn=$((a + b)) 
+    a=$b 
+    b=$fn 
+done
+
+***********************************************************
+***********************************************************
+
+8.
+read - p "Enter string:" string 
+    
+    len 
+    = $ 
+{ 
+    #string 
+} 
+
+for ((i = $len - 1; i >= 0; i--)) 
+    do 
+    reverse = "$reverse${string:$i:1}" done 
+        echo "$reverse"
+
+
+***********************************************************
+***********************************************************
+
+9.
+read - p "Enter string:" string 
+
+    len 
+= $ 
+
+{
+
+}
+
+for ((i = $len - 1; i >= 0; i--)) 
+
+do
+reverse = "$reverse${string:$i:1}" 
+done 
+
+echo "$reverse"
+
+***********************************************************
+***********************************************************
+
+10.
+
+echo -n "Enter number : "
+read n
+ 
+sd=0
+ 
+rev=""
+ 
+on=$n
+ 
+while [ $n -gt 0 ]
+do
+    sd=$(( $n % 10 ))
+    n=$(( $n / 10 ))  
+    rev=$( echo ${rev}${sd} ) 
+done
+ 
+echo  "$on in a reverse order $rev"
+
+***********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+
+1.
+
+
+echo "enter the password"
+read password
+len="${#password}"
+
+if test $len -ge 8 ; then
+
+echo "$password" | grep -q [0-9]
+
+if test $? -eq 0 ; then
+
+echo "$password" | grep -q [A-Z]
+
+ if test $? -eq 0 ; then
+echo "$password" | grep -q [a-z]   
+
+if test $? -eq 0 ; then
+echo "Strong password"
+
+ else
+
+echo "weak password include lower case char"
+
+ fi
+
+ else
+
+echo "weak password include capital char" 
+
+fi
+
+else
+
+echo "please include the numbers in password it is weak password"   
+
+fi
+else
+echo "password lenght should be greater than or equal 8 hence weak password"
+fi
+
+
