@@ -1,0 +1,127 @@
+﻿Que1. Write a JavaScript function to get First and Last name from the previously created Resume form
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que1</title>
+    <script> function MyFunction()
+     {
+        var first, second;
+        first = document.getElementById("firstname").value;
+        second = document.getElementById("lastname").value;
+    
+        document.GetElementById("here").InnerHTML = first;
+        document.GetElementById("here").InnerHTML = second;
+    }
+    </script>
+</head>
+<body>
+    First name:<br>
+    <input type="text" name="firstname">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname">
+    <br>
+    <input type="button" value="send" onclick="MyFunction()">
+    <div id="here"></div>
+</body>
+</html>
+=========================================================================================
+Que3.Write a JavaScript function to validate whether a given value is RegEx or not.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que3</title>
+    <script>function is_regexp(value)
+        {
+       return toString.call(value) === '[object RegExp]';
+        }
+
+console.log(is_regexp(/test/));
+
+console.log(is_regexp('bar'));
+
+console.log(is_regexp(72));</script>
+</head>
+<body>
+    <h1>JavaScript function to validate whether a given value RegExp or not.</h1>
+</body>
+</html>
+=====================================================================================
+Que4.//Write a jQuery program to get a single element from a selection of elements ofa HTML page.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que4</title>
+    <script src="Que4.js"></script>
+</head>
+<body>
+    <h1>jQuery program to get a single element from a selection of elements ofa HTML page.</h1>
+        <ui>
+        <li>Pratiksha</li>
+        <li>Edac</li>
+        <li>Mumbai</li>
+
+    
+</body>
+</html>
+jsfile-
+var listItems = $( 'li' );
+var rawListItem = listItems[1]; // or listItems.get(0)
+var html = rawListItem.innerHTML;
+console.log(html);
+=========================================================================================
+Que6. Write a jQuery program to attach a click and double-click events to all <p> elements.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script type="p/javascript">
+        $("p").bind("click", function(){
+            $( "<p>This is a click Event</p>").appendTo( "#result" );
+            });
+            $("p").bind("dblclick", function(){
+              $( "<p>This is a double-click Event</p>"  ).appendTo( "#result" );
+              });</script>
+    
+        <meta charset="utf-8">
+        <title>Attach a click and double-click event to the <p> element</title>
+        </head>
+        <body>
+        <p>Click me!</p>
+        <div id="result"></div>
+        </body>
+</head>
+
+</html>
+================================================================================================
+Que7.Write a jQuery program to hide all headings on a page when they are clicked.
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>Hide all headings  on a page when they are clicked</title>
+</head>
+<body>
+<h1>Heading-1</h1>
+<h2>Heading-2</h2>
+<h3>Heading-3</h3>
+</body>
+</html>
+
+Jqueryfile-
+$("h1,h2,h3" ).click(function() {
+  $( this ).slideUp();
+});
+==================================================================================================
+
+
